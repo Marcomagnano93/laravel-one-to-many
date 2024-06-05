@@ -15,6 +15,7 @@
         <tr>
           <th scope="col" class="text-black-50">Titolo</th>
           <th scope="col" class="text-black-50">GitHub</th>
+          <th scope="col" class="text-black-50">Tipo</th>
           <th scope="col" class="text-black-50">Descrizione</th>
           <th scope="col" class="text-black-50">Modifica</th>
           <th scope="col" class="text-black-50">Elimina</th>
@@ -28,6 +29,9 @@
                 </th>
               <td>
                 <a href="{{ $dashboard->git }}">Link</a>
+              </td>
+              <td>
+                <span>{{ $dashboard->type ? $dashboard->type->name : '' }}</span>
               </td>
               <td>
                 <a href="{{route('admin.dashboards.show', $dashboard)}}" class="btn btn-primary btn">Dettagli</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dashboard;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -24,7 +25,10 @@ class DashboardController extends Controller
          */
         public function create()
         {
-            return view('admin.dashboards.create');
+
+            $types = Type::orderBy('name', 'asc')->get();
+
+            return view('admin.dashboards.create', compact('types'));
         }
 
         /**
@@ -36,6 +40,7 @@ class DashboardController extends Controller
             $request->validate([
                 'title'=>'required|max:255',
                 'git'=>'required|max:255',
+                'type_id' => 'nullable|exists:type,id',
                 'description'=>'required'
             ]);
 
