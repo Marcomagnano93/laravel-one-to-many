@@ -12,6 +12,7 @@ class Dashboard extends Model
     protected $fillable = [
         'title',
         'git',
+        'type_id',
         'description'
     ];
 

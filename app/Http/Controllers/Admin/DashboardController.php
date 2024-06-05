@@ -40,7 +40,7 @@ class DashboardController extends Controller
             $request->validate([
                 'title'=>'required|max:255',
                 'git'=>'required|max:255',
-                'type_id' => 'nullable|exists:type,id',
+                'type_id' => 'nullable|exists:types,id',
                 'description'=>'required'
             ]);
 
@@ -57,7 +57,10 @@ class DashboardController extends Controller
          */
         public function show(Dashboard $dashboard)
         {
-            return view('admin.dashboards.show', compact('dashboard'));
+
+            $types = Type::orderBy('name', 'asc')->get();
+
+            return view('admin.dashboards.show', compact('dashboard', 'types'));
         }
 
         /**
@@ -65,7 +68,10 @@ class DashboardController extends Controller
          */
         public function edit(Dashboard $dashboard)
         {
-            return view('admin.dashboards.edit', compact('dashboard'));
+
+            $types = Type::orderBy('name', 'asc')->get();
+
+            return view('admin.dashboards.edit', compact('dashboard', 'types'));
         }
 
         /**
@@ -76,6 +82,7 @@ class DashboardController extends Controller
             $request->validate([
                 'title'=>'required|max:255',
                 'git'=>'required|max:255',
+                'type_id' => 'nullable|exists:types,id',
                 'description'=>'required'
             ]);
 

@@ -21,7 +21,15 @@
                 <label for="git" class="form-label">GitHub: </label>
                 <input type="text" class="form-control" id="git" name="git" value="{{old('git', $dashboard->git)}}">
             </div>
-
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Tipo:</label>
+                <select class="form-control" name="type_id" id="type_id">
+                    <option value="">Seleziona un tipo</option>
+                    @foreach($types as $type) 
+                    <option @selected( $type->id == old('type_id') ) value="{{ $type->id }}"> {{ $type->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="input-group">
                 <span class="input-group-text">Descrizione</span>
                 <textarea class="form-control" aria-label="With textarea" name="description">{{ $dashboard->description }}</textarea>
