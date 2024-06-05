@@ -14,4 +14,9 @@ class Dashboard extends Model
         'git',
         'description'
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
