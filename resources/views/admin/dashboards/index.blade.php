@@ -40,14 +40,31 @@
                 <a href="{{route('admin.dashboards.edit', $dashboard)}}" class="btn btn-warning btn">Modifica</a>
               </td>
               <td>
-                <form action="{{route('admin.dashboards.destroy', $dashboard)}}" method="POST">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger">Elimina</button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal">
+                  Elimina
+              </button>
               </td>
           </tr>
         @endforeach
       </tbody>
     </table>
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="ModalLabel">Sei sicuro di eliminare il progetto?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Annulla</button>
+                            <form action="{{route('admin.dashboards.destroy', $dashboard)}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger">Elimina</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </div>
 @endsection

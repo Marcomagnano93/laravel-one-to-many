@@ -39,7 +39,7 @@ class DashboardController extends Controller
 
             $request->validate([
                 'title'=>'required|max:255',
-                'git'=>'required|max:255',
+                'git'=>'required|url',
                 'type_id' => 'nullable|exists:types,id',
                 'description'=>'required'
             ]);
@@ -81,7 +81,7 @@ class DashboardController extends Controller
         {
             $request->validate([
                 'title'=>'required|max:255',
-                'git'=>'required|max:255',
+                'git'=>'required|url',
                 'type_id' => 'nullable|exists:types,id',
                 'description'=>'required'
             ]);
