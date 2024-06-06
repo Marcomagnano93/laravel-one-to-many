@@ -56,7 +56,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -64,7 +64,15 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $request->validate([
+            'name'=>'required|max:255',
+        ]);
+
+        $form_data = $request->all();
+
+        $type->update($form_data);
+
+        return to_route('admin.types.index', $type);
     }
 
     /**

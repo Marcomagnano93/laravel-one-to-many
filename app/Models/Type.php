@@ -9,6 +9,10 @@ class Type extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
     public function dashboards()
     {
         return $this->hasMany(Dashboard::class);

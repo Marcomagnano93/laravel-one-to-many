@@ -13,7 +13,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col" class="text-black-50">Nome</th>
+          <th scope="col" class="text-black-50">Tipologia</th>
+          <th scope="col" class="text-black-50">Modifica</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,9 @@
           <tr>
             <th scope="row">
                 <span>{{ $type->name }}</span>
+            </th>
+            <th scope="row">
+                <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-warning">Modifica</a>
             </th>
           </tr>
         @endforeach
