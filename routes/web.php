@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +34,18 @@ Route::middleware(['auth', 'verified'])
         Route::resource('dashboards', DashboardController::class);
     });
 
+Route::middleware(['auth', 'verified'])
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
 
+        Route::get('/', function () {
+            return view('admin.type');
+        })->name('type');
+
+    
+    Route::resource('types', TypeController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
