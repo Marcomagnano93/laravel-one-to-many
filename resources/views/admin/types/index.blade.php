@@ -5,7 +5,8 @@
 @section('content')
 <div class="container">
     <div class="d-flex gap-4 py-3">
-    <h1>Tipi di progetto</h1>
+        <h1>Tipi di progetto</h1>
+        <a href="{{route('admin.types.create')}}" class="btn btn-success btn-lg">Nuova Tipologia</a>
     </div>
    
 
